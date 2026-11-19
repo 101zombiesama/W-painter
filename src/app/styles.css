@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/* Design tokens. Tailwind turns these into utilities: bg-panel, text-fg-dim, border-line... */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --color-app: #0d0f13;
+  --color-panel: #14171d;
+  --color-raised: #1b1f27;
+  --color-hover: #242934;
+  --color-active: #2d3341;
+  --color-line: #232832;
+  --color-line-strong: #333a48;
+
+  --color-fg: #e8eaf0;
+  --color-fg-dim: #a3aaba;
+  --color-fg-faint: #6a7285;
+
+  --color-accent: #7c8cff;
+  --color-accent-strong: #99a5ff;
+  --color-accent-soft: #7c8cff24;
+  --color-danger: #ff6b6b;
+  --color-warning: #f5b84a;
+  --color-success: #4fd1a5;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-app);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+  overscroll-behavior: none;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+/* Keyboard focus only: mouse users never see rings. */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 1.5px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* Thin, unobtrusive scrollbars for dense panels. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+/* Transparent-background checkerboard, used behind swatches and thumbnails. */
+.checkerboard {
+  background-color: #2a2e38;
+  background-image:
+    linear-gradient(45deg, #353a46 25%, transparent 25%, transparent 75%, #353a46 75%),
+    linear-gradient(45deg, #353a46 25%, transparent 25%, transparent 75%, #353a46 75%);
+  background-size: 10px 10px;
+  background-position:
+    0 0,
+    5px 5px;
+}
+
+/* react-colorful, restyled to match the panels. */
+.color-picker .react-colorful {
+  width: 100%;
+  height: 168px;
+}
+.color-picker .react-colorful__saturation {
+  border-radius: 6px 6px 0 0;
+  border-bottom: none;
+}
+.color-picker .react-colorful__hue {
+  height: 12px;
+  border-radius: 0 0 6px 6px;
+}
+.color-picker .react-colorful__pointer {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
